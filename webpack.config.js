@@ -22,6 +22,17 @@ const config = {
         ]
       },
       {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [{
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'assets/fonts/',
+            publicPath: '../assets/fonts'
+          }
+        }]
+      },
+      {
         test: /\.(s*)css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
       },
