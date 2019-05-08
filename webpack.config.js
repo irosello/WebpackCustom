@@ -3,6 +3,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 const config = {
@@ -23,7 +24,20 @@ const config = {
       {
         test: /\.(s*)css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
-      }
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[ext]",
+              outputPath: "assets/images/",
+              publicPath: '../assets/images/'
+            }
+          }
+        ]
+      },
     ]
   },
   resolve: {
@@ -49,7 +63,10 @@ const config = {
       host: 'localhost',
       port: 3000,
       server: { baseDir: ['dist'], directory: true }
-    })
+    }),
+    new CopyWebpackPlugin([
+      {from:'src/assets/images',to:'assets/images'} 
+    ]), 
  ], 
 };
 module.exports = config;

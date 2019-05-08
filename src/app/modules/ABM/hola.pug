@@ -6,27 +6,17 @@ block content
         .alerts_container
             +alert-bootstrap("danger","hola soy un alerta","cuidado")
         
-        <div class="card" style="width: 18rem;">
-            <img src="imagen.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
+        div.card(style="width: 18rem;")
+            img.card-img-top(src="../../../assets/images/image.jpg")
+            .card-body
+                h5.card-title Card title
+                p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
+                a.btn.btn-primary(href="javascript:void(0)") Go somewhere
+           
         
-        //- form.row
-        //-     .col-sm-5.col-sm-offset-1
-        //-         +panel
-        //- +toolbar
 
-    //- p Woah.
-    //- +modal('Que golazo!')
-    //-     +block('body')
-    //-         p Body
-    //-         p Other p
-    //-         div 
-    //-             span a span
-    //-             span other span
-        
+        div#img-bkg(style="width:500px;height:500px")
+        div#img-svg-bkg(style="width:300px;height:300px;")
+        object(data="../../../assets/images/rabbit.svg", type="image/svg+xml")
+
 
