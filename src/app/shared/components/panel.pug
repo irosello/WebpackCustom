@@ -1,0 +1,19 @@
+mixin panel(title)
+    block
+    div.modal.fade
+    div.modal-dialog.modal-sm
+        form.modal-content
+            div.modal-header
+                button.close(
+                    type='button'
+                    data-editform='ignore'
+                )
+                    span &times;
+                    span.sr-only Close
+                h3.modal-title= title
+            div.modal-body
+                if blocks.body
+                    - blocks.body()
+            if blocks.footer
+                div.modal-footer
+                    - blocks.footer()

@@ -1,0 +1,8 @@
+// https://github.com/pugjs/pug/issues/631
+// https://codepen.io/14islands/pen/QqXYrb?editors=1010
+// https://codepen.io/DimWeb/pen/LzjbeO
+// initialization
+- blocks = []
+
+mixin block(key)
+    - blocks[key] = this.block

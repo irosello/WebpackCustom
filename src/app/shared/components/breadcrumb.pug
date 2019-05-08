@@ -1,0 +1,15 @@
+mixin breadcrumb(levels)
+    ul
+        li
+            a(href='markup.shtml')
+                i.main_logo.logo_krusty
+                
+        each item, index in levels
+            - var name = item[0]
+            - var link = item[1] || null
+
+            li
+                if link
+                    a(href=link)= name
+                else
+                    a(href='javascript:void(0)')= name

@@ -1,0 +1,21 @@
+mixin alert(type,content,strong)
+    block
+    .alert.alert-dismissible(role="alert" class="alert-" + type)
+        button.close(type="button" data-dismiss="alert")
+            span(aria-hidden="true") &times;
+            span.sr-only Close
+        +message(content,strong)
+
+mixin message(content,strong)
+    unless strong
+        =content
+    else
+        strong=strong
+        =content
+
+mixin alert-bootstrap(type,message)
+    .alert.alert-dismissible(role="alert" class="alert-" + type)
+    strong= strong
+    = message
+    button.close(type="button" data-dismiss="alert" aria-label="Close")
+        span(aria-hidden="true") &times;

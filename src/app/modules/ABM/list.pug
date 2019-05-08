@@ -1,0 +1,33 @@
+//- index.pug
+extends ../../layouts/layout
+block content
+    section
+        +nav([['UI Examples', 'ui_examples.shtml'], ['Collapsible Search']])
+        .alerts_container
+            +alert("danger","hola soy un alerta","cuidado")
+            +alert("danger","hola soy un alerta")
+        
+        <div class="card" style="width: 18rem;">
+            <img src="imagen.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+        
+        //- form.row
+        //-     .col-sm-5.col-sm-offset-1
+        //-         +panel
+        //- +toolbar
+
+    //- p Woah.
+    //- +modal('Que golazo!')
+    //-     +block('body')
+    //-         p Body
+    //-         p Other p
+    //-         div 
+    //-             span a span
+    //-             span other span
+        
+
