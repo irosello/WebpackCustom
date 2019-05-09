@@ -1,0 +1,26 @@
+//- index.pug
+extends ../../layouts/layout
+block content
+    .container
+        block header
+        block content
+            section
+                +alert-bootstrap("danger","hola soy un alerta","cuidado")
+                nav(aria-label="breadcrumb")
+                    ol.breadcrumb
+                        li.breadcrumb-item
+                            a(href="#") Home
+                        li.breadcrumb-item
+                            a(href="#") Library
+                form
+                    .form-group
+                        label(for="exampleInputEmail1") Email address
+                        input.form-control#exampleInputEmail1(type="email" aria-describedby="emailHelp" placeholder="Enter email")
+                        small.form-text.text-muted#emailHelp We'll never share your email with anyone else.
+                    .form-group
+                        label(for="exampleInputPassword1") Password
+                        input.form-control#exampleInputPassword1(type="password" placeholder="Password")
+                    .form-group.form-check
+                        input.form-check-input#exampleCheck1(type="checkbox")
+                        label.form-check-label(for="exampleCheck1") Check me out
+                    button.btn.btn-primary(type="submit") Submit

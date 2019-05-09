@@ -1,0 +1,36 @@
+//- index.pug
+extends ../../layouts/layout
+block content
+    .container
+        block content
+            section
+                +alert-bootstrap("danger","hola soy un alerta","cuidado")
+                nav(aria-label="breadcrumb")
+                    ol.breadcrumb
+                        li.breadcrumb-item
+                            a(href="#") Home
+                        li.breadcrumb-item
+                            a(href="#") Library
+                table.table 
+                    thead
+                        tr
+                            th(scope="col") #
+                            th(scope="col") First
+                            th(scope="col") Last
+                            th(scope="col") Handle
+                    tbody
+                        tr
+                            th(scope="row") 1
+                            th Mark
+                            th Otto
+                            th @mdo
+                        tr
+                            th(scope="row") 1
+                            th Mark
+                            th Otto
+                            th @mdo
+                        tr
+                            th(scope="row") 1
+                            th Mark
+                            th Otto
+                            th @mdo
