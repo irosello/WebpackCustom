@@ -1,8 +1,9 @@
 // webpack.config.js
 const path = require('path');
-const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const TerserJSPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
@@ -11,6 +12,11 @@ const config = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js'
+  },
+  devtool: 'source-map',  
+  optimization: {
+    // it'll minimize after running build
+    minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
   },
   module: {
     rules: [
@@ -33,8 +39,17 @@ const config = {
         }]
       },
       {
-        test: /\.(s*)css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+        test: /\.(css|scss)$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader', {
+          loader: 'postcss-loader',
+          options: {
+            ident:'postcss',
+            plugins: [
+              require('autoprefixer')({}),
+            ]
+          }
+        }
+       ]        
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
@@ -69,7 +84,7 @@ const config = {
     }),
     new MiniCssExtractPlugin({
       filename: "scss/[name].css",
-    }),    
+    }), 
     new BrowserSyncPlugin({
       host: 'localhost',
       port: 3000,
@@ -77,7 +92,7 @@ const config = {
     }),
     new CopyWebpackPlugin([
       {from:'src/assets/images',to:'assets/images'} 
-    ]), 
+    ])    
  ], 
 };
 module.exports = config;
